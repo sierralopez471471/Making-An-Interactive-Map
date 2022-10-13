@@ -22,29 +22,30 @@ const myMap = {
       .bindPopup('<p1><b>You are here</b><br></p1>')
       .openPopup()
 
-      // new myMap.markers({
-      //   getPosition(),
-      //   map,
-      //   title: "Coffee",
-      // });
-
-      // new myMap.markers({
-      //   getPosition(),
-      //   map,
-      //   title: "Restaurant",
-      // });
-
-      // new myMap.markers({
-      //   getPosition(),
-      //   map,
-      //   title: "Hotel",
-      // });
-
-      // new myMap.markers({
-      //   getPosition(),
-      //   map,
-      //   title: "Market",
-      // });
+      var i = 0;
+      var businesses = [{
+        name: "coffee",
+        properties: {
+          getBusiness(){},
+        },
+        name: "restaurant",
+        properties: {
+          getBusiness(){},
+        },
+        name: "hotel",
+        properties: {
+          getBusiness(){},
+        },
+        name: "market",
+        properties: {
+          getBusiness(){}
+        }
+      }];
+      var props = businesses[i].properties;
+      var markers = L.markers(businesses[i].properties)
+      marker 
+        .addTo(this.map)
+        .bindPopup(`<p>${business.name}</p>`)
   }
 }
 
@@ -67,7 +68,7 @@ const options = {
   }
 }
 
-async function getPosition(){
+async function getBusiness(){
   const response = await fetch('https://cors-anywhere.herokuapp.com/https://api.foursquare.com/v3/places/search?query=' + `${business}` + '&ll=' + `${pos.coords.latitude}` + '%2C' + `${pos.coords.longitude}` + '&limit=5', options)
   var result = await response.text();
   return [result.latitude, result.longitude];
@@ -77,7 +78,7 @@ window.onload = async () => {
   const coords = await getCoords()
   console.log(coords)
   myMap.coordinates = coords
-  // const position = await getPosition()
+  // const position = await getBusiness()
   // console.log(position)
   // myMap.businesses = position
   myMap.buildMap()
