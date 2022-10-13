@@ -78,9 +78,6 @@ window.onload = async () => {
   const coords = await getCoords()
   console.log(coords)
   myMap.coordinates = coords
-  // const position = await getBusiness()
-  // console.log(position)
-  // myMap.businesses = position
   myMap.buildMap()
 }
 
